@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+	<style>
+		body {
+			width: 100%;
+		}
+        #canvasArea {   width: 100%;
+            
+        }
+
+        @font-face{ font-family : "gdjs_font_Bimbo_JVE.ttf"; src : url('Bimbo_JVE.ttf') format('truetype'); }
+	</style>
+    <!-- Libs and GDJS core files : -->
+		<script src="code.js"></script>
+
+
+</head>
+<body>
+    <div id="canvasArea"></div>
+
+    <div style="font-family: 'gdjs_font_Bimbo_JVE.ttf';">.</div>
+	<script>
+
+    (function() {document.getElementById("canvasArea").style.display = "flex";
+        //Initialization
+        gdjs.registerObjects();
+        gdjs.registerBehaviors();
+        gdjs.registerGlobalCallbacks();
+
+        var game = new gdjs.RuntimeGame(gdjs.projectData, {});
+
+        //Create a renderer
+        var canvasArea = document.getElementById("canvasArea");
+        game.getRenderer().createStandardCanvas(canvasArea);
+
+        //Bind keyboards/mouse/touch events
+        game.getRenderer().bindStandardEvents(game.getInputManager(), window, document);
+
+        //Load all assets and start the game
+        game.loadAllAssets(function() {
+            game.startGameLoop();
+        });
+    })();
+
+	</script>
+</body>
+</html>
